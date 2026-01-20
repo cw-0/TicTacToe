@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
+#include <limits>
 #include <string>
 
 const char *X{"\033[36mX\033[0m"};
@@ -83,6 +84,8 @@ int get_chosen_spot() {
     std::cout << "Player " << (player_one_turn ? "1" : "2") << " Choose Spot: ";
     std::cin >> chosen_spot;
     if (spot_unavailable(chosen_spot)) {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       std::cout << "Invalid Spot\n";
       chosen_spot = 0;
       continue;
