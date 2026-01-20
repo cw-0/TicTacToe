@@ -18,6 +18,7 @@ std::string spot_symbol(int n);
 
 int main() {
   game_loop();
+  system("pause");
   return 0;
 }
 
@@ -57,14 +58,14 @@ void game_loop() {
       clear_terminal();
       print_board();
       std::cout << "Player " << (player_one_turn ? "1" : "2") << " Wins!\n";
-      exit(EXIT_SUCCESS);
+      return;
     }
 
     if (available_spots.size() <= 0) {
       clear_terminal();
       print_board();
       std::cout << "TIE\n";
-      exit(EXIT_SUCCESS);
+      return;
     }
   }
 }
